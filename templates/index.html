@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOME</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css"/>
+	
+	 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet"> 
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">  
+</head>
+<body>
+
+<header>
+	
+<nav>
+	
+	
+		<a href="https://zingmind.com/"><img class="logo" src="../static/zingmind.png"  width="130" height="130" ALT="align box" ALIGN=CENTER></a>
+	<div class="menu">
+		<!-- <a href="{{url_for('index') }} " style="font-size:15px;">Home</a>
+		<a href="#" style="font-size:15px;">gallery</a>
+		<a href="#" style="font-size: 15px;">about</a>
+		<a href="#" style="font-size:15px;">contact</a> -->
+		<!-- <a href="{{url_for('login') }} " style="margin-left: 480px;" ><button class="login_button">Login Here</button></a> -->
+		
+	</div>
+</nav>
+
+	<main>
+		<section>
+			{% block content %} 
+			<!-- <h3>Welcome To Zing Mind</h3>
+			<h1>DO COME & VISIT FOR<span class="change_content"> </span> <span style="margin-top: -10px;"> | </span> </h1> -->
+			<!-- <p>Guide your business with our perfect combination of Big Data and Analytics services.</p>
+			<a href="#" class="btnone">Learn More</a> -->
+			<h1>Welcome</h1>
+			<a href="{{url_for('login') }} " class="btntwo">Login Here</a> 
+			{% if key_valid %}
+      
+    {% else %}
+	
+      <!-- <h1>Enter your license key</h1> -->
+      <form action="{{ url_for('verify_key') }}" method="POST">
+        <!-- <input type="text" name="key">
+        <input type="submit" value="Verify"> -->
+      </form>
+    {% endif %}
+			{% endblock %}
+		</section>
+	</main>
+
+
+</header>
+
+</body>
+</html>

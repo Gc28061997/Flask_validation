@@ -1,0 +1,137 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Manage Users
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+ <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<header>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="https://zingmind.com/"><img class="navbar-brand" src="../static/zingmind.png"   ALT="align box" ALIGN=CENTER></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <div class="btn-group" role="group">
+            <div class="dropdown">
+              <button class="login_button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Here &#9660;
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <li> <a class="dropdown-item" href="{{url_for('manageusers')}}">Manage User</a></li>
+                <li><a class="dropdown-item" href="{{url_for('signup')}}">Add User</a></li>
+                <!-- <li><a class="dropdown-item" href="{{url_for('login')}}">Logout</a></li> -->
+              </div>
+            </div>
+           </div>
+          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <form  name="form0" method="POST"  action="{{url_for('Admin_data_validation')}}" >
+              <a href="{{url_for('Admin_data_validation')}}"><button type="submit" name="Submitbutton"   value="SingleDataSource" class="login_button">SingleDataSource</button></a>&nbsp;&nbsp;
+              <a href="{{url_for('Admin_data_validation')}}"><button type="submit" name="Submitbutton"  value="DoubleDataSource" class="login_button">DoubleDataSource</button></a>
+            </form>
+          </div>
+          <a href="{{url_for('login')}}"><button type="submit" id="logout" class="logout_button">Logout</button></a>&nbsp;&nbsp;
+          </ul>
+          
+        
+  
+        
+      </div>
+    </div>
+  </nav>
+    
+    
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" >
+         
+          <div class="container-fluid" style="margin-top:20px ;">
+            <div class="row">
+              <div class="m-4 col-md-7" >
+                <h1 class="page-header">Manage Userdetails</h1>
+                {% with messages=get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+               <div class='alert alert-{{category}} text-center  show m-auto'>
+            {{ message }}
+            </div>
+            {% endfor %}
+            {% endwith %}
+                <table class="table table-dark table-hover">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>    
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                  {% for row in userDetails %}
+                            <tr>
+                            <td>{{row.id}}</td>    
+                            <td>{{row.username}}</td>
+                            <td>{{row.email}}</td>
+                            <td>{{row.role}}</td>
+                            <td><button><a href="/update/{{row.id}}">update</a></button></td>
+                            <td><button><a href="/delete/{{row.id}}">delete</a></button></td>
+                            </tr>
+                  {% endfor%}
+                </tbody>
+              </table>
+               </div> 
+            </div>
+          </div>         
+            
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+           
+
+
+
+
+
+
+
+
